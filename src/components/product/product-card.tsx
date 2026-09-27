@@ -4,6 +4,7 @@ import Link from "next/link";
 import type { Product } from "@/data/products";
 import { lowestPrice } from "@/data/products";
 import { site } from "@/data/site";
+import { HeartButton } from "./heart-button";
 import { Price } from "./price";
 import { QuickAdd } from "./quick-add";
 
@@ -43,6 +44,7 @@ export function ProductCard({ product, priority = false }: { product: Product; p
             <span className="rounded-full bg-note px-2.5 py-1 text-xs font-semibold text-ink">Sale</span>
           )}
         </div>
+        <HeartButton productId={product.id} productName={product.name} className="absolute top-3 right-3" />
         {single && single.inStock && (
           <QuickAdd
             variantId={single.id}

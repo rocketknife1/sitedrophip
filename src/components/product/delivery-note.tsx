@@ -23,7 +23,7 @@ export function DeliveryNote({ className, tilt = true }: { className?: string; t
   return (
     <div
       className={cn(
-        "relative max-w-xs bg-note px-5 pt-6 pb-5 shadow-[2px_3px_0_rgba(30,42,38,0.9)]",
+        "relative max-w-xs bg-note px-5 pt-6 pb-5 shadow-[2px_3px_0_rgba(14,21,48,0.9)]",
         tilt && "-rotate-2",
         className,
       )}

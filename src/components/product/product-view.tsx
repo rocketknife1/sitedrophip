@@ -12,6 +12,7 @@ import { site } from "@/data/site";
 import { formatPrice } from "@/lib/format";
 import { cn } from "@/lib/utils";
 import { useCart } from "@/store/cart";
+import { useRecent } from "@/store/lists";
 import { DeliveryNote } from "./delivery-note";
 import { Price } from "./price";
 
@@ -23,6 +24,12 @@ export function ProductView({ product }: { product: Product }) {
   const [buyBoxVisible, setBuyBoxVisible] = useState(true);
   const buttonRef = useRef<HTMLDivElement>(null);
   const add = useCart((s) => s.add);
+  const pushRecent = useRecent((s) => s.push);
+
+  // Remember what the visitor looked at, for "Recently viewed" on the home page
+  useEffect(() => {
+    pushRecent(product.id);
+  }, [product.id, pushRecent]);
 
   const variant = product.variants.find((v) => v.id === variantId)!;
   const image = product.images[imageIndex] ?? product.images[0];

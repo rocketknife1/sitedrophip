@@ -41,14 +41,14 @@
 }
 
 :root {
-  /* Northdesk palette */
-  --surface: #f4f4f1;
-  --ink: #17211d;
-  --forest: #1f4d3a;
-  --forest-deep: #143427;
-  --note: #f2c14e;
-  --line: #e4e4df;
-  --mute: #5f6863;
+  /* Sodo Store palette: cobalt on navy, sunny accent (distinct from Bloom's purple and NEST's green) */
+  --surface: #f3f5fa;
+  --ink: #0e1530;
+  --forest: #2f55f0;
+  --forest-deep: #0e1530;
+  --note: #ffc83d;
+  --line: #e2e6ef;
+  --mute: #5c6478;
 
   --background: #ffffff;
   --foreground: var(--ink);
@@ -62,11 +62,11 @@
   --secondary-foreground: var(--ink);
   --muted: var(--surface);
   --muted-foreground: var(--mute);
-  --accent: #e7efea;
+  --accent: #e7ecff;
   --accent-foreground: var(--forest);
-  --destructive: #b3261e;
+  --destructive: #c62a3a;
   --border: var(--line);
-  --input: #d3d6d0;
+  --input: #d3d8e4;
   --ring: var(--forest);
   --radius: 0.625rem;
 }
@@ -152,4 +152,16 @@
     opacity: 1 !important;
     transform: none !important;
   }
+}
+
+/* Slow zoom on hero photos */
+@keyframes kenburns {
+  from { transform: scale(1.14) translateX(1.5%); }
+  to { transform: scale(1.02); }
+}
+@utility animate-kenburns {
+  animation: kenburns 8s ease-out both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-kenburns { animation: none; }
 }

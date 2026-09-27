@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { CartButton } from "@/components/cart/cart-button";
+import { SavedLink } from "@/components/layout/saved-link";
 import { categories } from "@/data/products";
 import { Container } from "./container";
 import { Logo } from "./logo";
@@ -35,6 +36,7 @@ export function SiteHeader() {
           <Link href="/contact" className="hidden px-2 text-sm font-medium text-foreground/75 hover:text-foreground sm:block">
             Help
           </Link>
+          <SavedLink />
           <CartButton />
         </div>
       </Container>

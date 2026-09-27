@@ -20,18 +20,18 @@ export default function OpengraphImage() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: 72,
-          background: "#f5f6f3",
-          color: "#1e2a26",
+          background: "#f3f5fa",
+          color: "#0e1530",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: 16, fontSize: 40, fontWeight: 800, color: "#1f4d3a" }}>
-          <div style={{ width: 36, height: 36, background: "#f2c14e", transform: "rotate(-6deg)" }} />
+        <div style={{ display: "flex", alignItems: "center", gap: 16, fontSize: 40, fontWeight: 800, color: "#2f55f0" }}>
+          <div style={{ width: 36, height: 36, background: "#ffc83d", transform: "rotate(-6deg)" }} />
           {site.name}
         </div>
         <div style={{ fontSize: 84, fontWeight: 800, lineHeight: 1.05, letterSpacing: -2, maxWidth: 900 }}>
           What the world is buying, delivered to your door.
         </div>
-        <div style={{ fontSize: 30, color: "#5b6660" }}>Delivered across the EU · VAT included</div>
+        <div style={{ fontSize: 30, color: "#5c6478" }}>Delivered across the EU · VAT included</div>
       </div>
     ),
     size,
