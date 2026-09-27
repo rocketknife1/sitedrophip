@@ -4,6 +4,9 @@ import { legalPages } from "@/content/legal";
 import { products } from "@/data/products";
 import { site } from "@/data/site";
 
+// Generated once at build time (also required for the static GitHub Pages export).
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPaths = ["", "/products", "/contact", "/withdrawal"];
   return [

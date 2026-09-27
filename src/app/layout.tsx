@@ -46,7 +46,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <SiteFooter />
         <CartSheet />
         {site.demoMode && <DemoBanner />}
-        <Analytics />
+        {process.env.NEXT_PUBLIC_STATIC_PREVIEW !== "true" && <Analytics />}
       </body>
     </html>
   );
