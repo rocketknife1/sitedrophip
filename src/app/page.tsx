@@ -2,7 +2,10 @@ import { Check, Headphones, Lock, RotateCcw, Truck, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { DeskAnatomy } from "@/components/home/desk-anatomy";
 import { Container } from "@/components/layout/container";
+import { Reveal } from "@/components/motion/reveal";
+import { ScrollScene } from "@/components/motion/scroll-scene";
 import { DeliveryNote } from "@/components/product/delivery-note";
 import { ProductCard } from "@/components/product/product-card";
 import { ShopFaq } from "@/components/shop-faq";
@@ -49,18 +52,20 @@ export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative isolate overflow-hidden bg-ink">
-        <Image
-          src="/images/lifestyle/hero.jpg"
-          alt="A tidy dark desk with a monitor, keyboard and a plant"
-          fill
-          priority
-          sizes="100vw"
-          className="-z-10 object-cover object-[70%_center]"
-        />
+      <ScrollScene className="relative isolate overflow-hidden bg-ink">
+        <div className="absolute inset-0 -z-10 will-change-transform" style={{ transform: "scale(calc(1.12 - var(--p, 0) * 0.12)) translateY(calc(var(--p, 0) * 60px))" }}>
+          <Image
+            src="/images/lifestyle/hero.jpg"
+            alt="A tidy dark desk with a monitor, keyboard and a plant"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-[70%_center]"
+          />
+        </div>
         <div className="absolute inset-0 -z-10 bg-gradient-to-t from-black/85 via-black/45 to-black/10 md:bg-gradient-to-r md:from-black/80 md:via-black/40 md:to-transparent" />
         <Container className="flex min-h-[620px] flex-col justify-end pt-24 pb-12 md:min-h-[700px] md:justify-center md:py-24">
-          <div className="max-w-xl text-white">
+          <div className="max-w-xl text-white will-change-transform" style={{ transform: "translateY(calc(var(--p, 0) * -90px))", opacity: "calc(1 - var(--p, 0) * 1.3)" }}>
             <h1 className="text-[2.75rem] leading-[1.02] font-extrabold sm:text-6xl lg:text-7xl">Build a desk you want to sit at.</h1>
             <p className="mt-5 max-w-md text-lg leading-relaxed text-white/85">
               Stands, mats, lights and organisers that fix the neck ache, the cable mess and the glare. Delivered across the EU.
@@ -92,8 +97,10 @@ export default function HomePage() {
             </ul>
           </div>
         </Container>
-        <DeliveryNote className="absolute right-[max(1.5rem,calc((100vw-72rem)/2+1.5rem))] bottom-14 hidden w-72 rotate-3 lg:block" />
-      </section>
+        <div className="absolute right-[max(1.5rem,calc((100vw-72rem)/2+1.5rem))] bottom-14 hidden lg:block" style={{ transform: "translateY(calc(var(--p, 0) * -180px))" }}>
+          <DeliveryNote className="w-72 rotate-3" />
+        </div>
+      </ScrollScene>
 
       {/* Benefits */}
       <section aria-label="Why shop with us" className="border-b bg-surface">
@@ -125,20 +132,24 @@ export default function HomePage() {
         </div>
         <div className="grid grid-cols-2 gap-x-4 gap-y-10 sm:gap-x-6 lg:grid-cols-4">
           {products.map((p, i) => (
-            <ProductCard key={p.id} product={p} priority={i < 4} />
+            <Reveal key={p.id} delay={(i % 4) * 70}>
+              <ProductCard product={p} priority={i < 4} />
+            </Reveal>
           ))}
         </div>
       </Container>
+
+      <DeskAnatomy />
 
       {/* Categories */}
       <Container className="pt-24">
         <h2 className="mb-8 text-3xl font-extrabold sm:text-4xl">Shop by problem</h2>
         <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-          {categoryTiles.map((t) => (
+          {categoryTiles.map((t, i) => (
+            <Reveal key={t.category} delay={i * 70}>
             <Link
-              key={t.category}
               href={`/products?category=${encodeURIComponent(t.category)}`}
-              className="group relative aspect-[3/4] overflow-hidden rounded-xl bg-surface"
+              className="group relative block aspect-[3/4] overflow-hidden rounded-xl bg-surface"
             >
               <Image src={t.image} alt="" fill sizes="(min-width: 1024px) 25vw, 50vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
@@ -147,6 +158,7 @@ export default function HomePage() {
                 <p className="text-sm text-white/80">{t.text}</p>
               </div>
             </Link>
+            </Reveal>
           ))}
         </div>
       </Container>
@@ -212,7 +224,7 @@ export default function HomePage() {
 
       {/* Comparison */}
       <Container className="pt-24">
-        <div className="mx-auto max-w-3xl">
+        <Reveal className="mx-auto max-w-3xl">
           <h2 className="text-center text-3xl font-extrabold sm:text-4xl">Why order from {site.name}</h2>
           <p className="mx-auto mt-3 max-w-lg text-center text-muted-foreground">
             Similar products are often cheaper on big overseas marketplaces. This is what the difference pays for.
@@ -249,7 +261,7 @@ export default function HomePage() {
               </tbody>
             </table>
           </div>
-        </div>
+        </Reveal>
       </Container>
 
       {/* FAQ */}
