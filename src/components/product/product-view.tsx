@@ -1,6 +1,6 @@
 "use client";
 
-import { Lock, RotateCcw, Truck } from "lucide-react";
+import { Lock, RotateCcw, TrendingUp, Truck } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
@@ -94,6 +94,22 @@ export function ProductView({ product }: { product: Product }) {
           <span className="text-sm text-muted-foreground">VAT included</span>
         </div>
         <p className="mt-4 text-lg leading-relaxed text-muted-foreground">{product.tagline}</p>
+        {product.trend && (
+          <a
+            href={product.trend.url}
+            target="_blank"
+            rel="noopener"
+            className="mt-5 flex items-start gap-3 rounded-xl border bg-surface p-4 text-sm transition-colors hover:border-forest"
+          >
+            <span className="grid size-9 shrink-0 place-items-center rounded-full bg-ink text-note">
+              <TrendingUp className="size-4" />
+            </span>
+            <span>
+              <strong className="block text-base">Trending: {product.trend.stat}</strong>
+              {product.trend.detail} <span className="text-muted-foreground">Source: {product.trend.source}.</span>
+            </span>
+          </a>
+        )}
 
         {product.variants.length > 1 && (
           <fieldset className="mt-7">

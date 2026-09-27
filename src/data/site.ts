@@ -11,9 +11,9 @@ export const EU_COUNTRIES = [
 export type EuCountry = (typeof EU_COUNTRIES)[number];
 
 export const site = {
-  name: "Northdesk",
+  name: "Sodo Store",
   description:
-    "Desk gear that fixes the small annoyances: posture, noise, glare and clutter. Shipped from an EU warehouse.",
+    "Trending products picked from real sales and search data: tech, home, fitness, pets and more. Tracked delivery across the EU.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
 
   /**

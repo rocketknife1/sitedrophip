@@ -23,3 +23,9 @@ supplier's photos (or your own) before selling — a photo must show the exact i
 | lifestyle/bright-setup.jpg | images.unsplash.com/photo-1594636797501-ef436e157819 |
 | lifestyle/felt-mat-desk.jpg | images.unsplash.com/photo-1625461291092-13d0c45608b3 |
 | lifestyle/evening-desk.jpg | images.unsplash.com/photo-1611096002616-763f16ef15f3 |
+| products/phone-stand-*, power-bank-1, item-finder-1, dash-cam-*, car-mount-1 | Unsplash: 1760443728221, 1783909091141, 1566554738544, 1645163315215, 1653219912556, 1765959106936, 1764347923709 |
+| products/linen-set-*, topper-1, candle-* | Unsplash: 1617325247661, 1606855637183, 1606796913825, 1572726729207, 1612293905607 |
+| products/bottle-*, frother-1 | Unsplash: 1602143407151, 1625708458528, 1611832567923 |
+| products/massage-gun-*, bands-*, yoga-mat-1 | Unsplash: 1755254926874, 1746278925416, 1584735935682, 1783632869722, 1646239646963 |
+| products/satchel-*, socks-* | Unsplash: 1473188588951, 1517612228538, 1730447153639, 1640026199235 |
+| products/harness-*, grooming-1, vanity-mirror-1 | Unsplash: 1691755810877, 1581597359121, 1694372550345, 1551723454-7565a1f5b161 |

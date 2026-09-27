@@ -22,7 +22,7 @@ export function WithdrawalForm() {
       <Field
         name="items"
         label="Products you are withdrawing from"
-        hint="For example: Felt desk mat, 80 × 30 cm, 1 piece."
+        hint="For example: Insulated steel bottle, Sage, 1 piece."
         multiline
         rows={3}
         required

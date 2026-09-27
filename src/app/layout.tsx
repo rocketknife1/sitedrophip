@@ -17,7 +17,7 @@ const schibsted = Schibsted_Grotesk({
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title: { default: `${site.name}: desk and home-office gear`, template: `%s | ${site.name}` },
+  title: { default: `${site.name}: trending products, delivered across the EU`, template: `%s | ${site.name}` },
   description: site.description,
   openGraph: { siteName: site.name, type: "website" },
   // Keep the demo store out of search results.

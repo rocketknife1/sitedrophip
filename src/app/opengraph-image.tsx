@@ -5,7 +5,7 @@ import { site } from "@/data/site";
 // Generated once at build time (also required for the static GitHub Pages export).
 export const dynamic = "force-static";
 
-export const alt = `${site.name}: desk and home-office gear`;
+export const alt = `${site.name}: trending products, delivered across the EU`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -29,7 +29,7 @@ export default function OpengraphImage() {
           {site.name}
         </div>
         <div style={{ fontSize: 84, fontWeight: 800, lineHeight: 1.05, letterSpacing: -2, maxWidth: 900 }}>
-          Build a desk you want to sit at.
+          What the world is buying, delivered to your door.
         </div>
         <div style={{ fontSize: 30, color: "#5b6660" }}>Delivered across the EU · VAT included</div>
       </div>

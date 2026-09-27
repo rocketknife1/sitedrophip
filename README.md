@@ -1,4 +1,4 @@
-# Northdesk: magazin dropshipping (UE)
+# Sodo Store: magazin dropshipping (UE)
 
 Next.js 16 + Tailwind + Stripe Checkout + Resend. Fără bază de date: produsele stau în cod, comenzile în Stripe.
 
@@ -17,6 +17,19 @@ Site-ul merge și fără chei: poți naviga și adăuga în coș. Checkout-ul ș
 **https://rocketknife1.github.io/sitedrophip/** se actualizează singur la fiecare `git push` pe `main` (vezi tab-ul *Actions* pe GitHub).
 
 E o versiune statică: vitrina, coșul și paginile merg, dar **plata și formularele sunt oprite** (GitHub Pages nu are server). Pentru magazinul complet, cu Stripe și emailuri, site-ul trebuie pus pe Vercel sau pe alt host cu Node.js.
+
+## Catalogul și datele din spate
+
+26 de produse în 9 categorii (Tech, Home, Kitchen, Fitness, Fashion, Home office, Car, Pets, Beauty), alese din categoriile care cresc cel mai mult online:
+
+- [Shopify, Trending products 2026](https://www.shopify.com/blog/trending-products): genți satchel +1.771%, topper/saltele +1.035%, șosete +779%, accesorii de bord +140%, camere de bord 100.000+ căutări/lună, lenjerie de in ~20.000 căutări/lună
+- [DataReportal Digital 2025 (GWI, Statista)](https://datareportal.com/reports/digital-2025-sub-section-online-shopping): 56% dintre utilizatorii de internet cumpără online în fiecare săptămână; moda și electronicele conduc vânzările online
+
+Produsele cu `trend` în `src/data/products.ts` primesc eticheta „Trending” și afișează cifra cu sursa. Nu sunt vânzările noastre, sunt date de piață publice.
+
+**Excluse intenționat:** cosmeticele (în UE cer notificare CPNP și persoană responsabilă) și suplimentele (legislație alimentară).
+
+**Atenție înainte de lansare:** produsele cu baterii sau electronice (power bank, localizator, cameră de bord, pistol de masaj, lampă, oglindă LED, încărcător) cer marcaj CE de la furnizor și înregistrare EPR (WEEE și baterii) în țările în care vinzi. Textilele cer etichetă de compoziție. Cere-le furnizorului documentele înainte să listezi produsul.
 
 ## Unde schimbi ce
 

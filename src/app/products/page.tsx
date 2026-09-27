@@ -6,7 +6,7 @@ import { Catalog, CatalogBody } from "@/components/product/catalog";
 
 export const metadata: Metadata = {
   title: "Shop",
-  description: "Laptop stands, felt desk mats, monitor lights and desk organisers. Delivered across the EU.",
+  description: "Trending tech, home, kitchen, fitness, fashion, car, pet and beauty products. Delivered across the EU.",
 };
 
 export default function ProductsPage() {

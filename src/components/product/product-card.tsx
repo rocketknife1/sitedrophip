@@ -35,6 +35,7 @@ export function ProductCard({ product, priority = false }: { product: Product; p
           />
         )}
         <div className="absolute top-3 left-3 flex flex-col items-start gap-1.5">
+          {product.trend && <span className="rounded-full bg-ink px-2.5 py-1 text-xs font-semibold text-white shadow-sm">Trending</span>}
           {price >= site.shipping.freeOverCents && (
             <span className="rounded-full bg-white px-2.5 py-1 text-xs font-semibold text-forest shadow-sm">Free delivery</span>
           )}
