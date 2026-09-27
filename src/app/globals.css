@@ -1,26 +1,136 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --color-note: var(--note);
+  --color-forest: var(--forest);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-forest-deep: var(--forest-deep);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-schibsted);
   --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-schibsted);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  /* Northdesk palette */
+  --surface: #f4f4f1;
+  --ink: #17211d;
+  --forest: #1f4d3a;
+  --forest-deep: #143427;
+  --note: #f2c14e;
+  --line: #e4e4df;
+  --mute: #5f6863;
+
+  --background: #ffffff;
+  --foreground: var(--ink);
+  --card: #ffffff;
+  --card-foreground: var(--ink);
+  --popover: #ffffff;
+  --popover-foreground: var(--ink);
+  --primary: var(--forest);
+  --primary-foreground: #ffffff;
+  --secondary: var(--surface);
+  --secondary-foreground: var(--ink);
+  --muted: var(--surface);
+  --muted-foreground: var(--mute);
+  --accent: #e7efea;
+  --accent-foreground: var(--forest);
+  --destructive: #b3261e;
+  --border: var(--line);
+  --input: #d3d6d0;
+  --ring: var(--forest);
+  --radius: 0.625rem;
+}
+
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+@layer base {
+  h1, h2, h3 {
+    @apply font-heading text-balance;
+    letter-spacing: -0.02em;
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+  :focus-visible {
+    outline: 2px solid var(--forest);
+    outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Long-form legal text */
+@layer components {
+  .legal h2 {
+    @apply mt-10 mb-3 text-xl font-bold;
+  }
+  .legal p,
+  .legal li {
+    @apply leading-relaxed text-foreground/85;
+  }
+  .legal p + p {
+    @apply mt-3;
+  }
+  .legal ul {
+    @apply mt-2 list-disc space-y-2 pl-5;
+  }
+  .legal a {
+    @apply font-medium text-forest underline underline-offset-4;
+  }
+  .legal blockquote {
+    @apply mt-4 space-y-2 border-l-4 border-note bg-card p-5;
+  }
+  .legal dl {
+    @apply grid gap-x-8 gap-y-1 sm:grid-cols-[14rem_1fr];
+  }
+  .legal dt {
+    @apply pt-3 text-sm font-semibold sm:pt-2;
+  }
+  .legal dd {
+    @apply text-foreground/85 sm:pt-2;
+  }
 }
