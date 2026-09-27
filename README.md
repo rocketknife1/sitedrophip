@@ -12,6 +12,12 @@ npm run dev                  # http://localhost:3000
 
 Site-ul merge și fără chei: poți naviga și adăuga în coș. Checkout-ul și formularele îți spun clar ce cheie lipsește.
 
+## Preview online (GitHub Pages)
+
+**https://rocketknife1.github.io/sitedrophip/** se actualizează singur la fiecare `git push` pe `main` (vezi tab-ul *Actions* pe GitHub).
+
+E o versiune statică: vitrina, coșul și paginile merg, dar **plata și formularele sunt oprite** (GitHub Pages nu are server). Pentru magazinul complet, cu Stripe și emailuri, site-ul trebuie pus pe Vercel sau pe alt host cu Node.js.
+
 ## Unde schimbi ce
 
 | Ce | Fișier |
