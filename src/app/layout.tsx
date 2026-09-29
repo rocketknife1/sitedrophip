@@ -5,6 +5,7 @@ import { Schibsted_Grotesk } from "next/font/google";
 import { CartSheet } from "@/components/cart/cart-sheet";
 import { AnnouncementBar } from "@/components/layout/announcement-bar";
 import { DemoBanner } from "@/components/layout/demo-banner";
+import { MaintenanceOverlay } from "@/components/layout/maintenance-overlay";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { site } from "@/data/site";
@@ -46,6 +47,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <SiteFooter />
         <CartSheet />
         {site.demoMode && <DemoBanner />}
+        <MaintenanceOverlay />
         {process.env.NEXT_PUBLIC_STATIC_PREVIEW !== "true" && <Analytics />}
       </body>
     </html>
