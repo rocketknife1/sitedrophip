@@ -1,0 +1,445 @@
+{
+  "version": 1,
+  "name": "Sodo Store",
+  "liveUrl": "https://rocketknife1.github.io/sitedrophip/",
+  "imageDir": "public/images/products",
+  "imagePublicPath": "/images/products",
+  "build": "actions",
+  "files": [
+    {
+      "path": "src/data/products.json",
+      "sections": [
+        {
+          "key": "products",
+          "label": "Produse",
+          "description": "Catalogul magazinului. Un produs greșit completat oprește publicarea, iar site-ul rămâne pe versiunea anterioară.",
+          "type": "list",
+          "itemTitle": "name",
+          "itemSubtitle": "category",
+          "itemImage": "images.0.src",
+          "fields": [
+            {
+              "key": "name",
+              "label": "Nume produs",
+              "type": "text",
+              "required": true
+            },
+            {
+              "key": "slug",
+              "label": "Adresa paginii (ex. aluminium-laptop-stand)",
+              "type": "slug",
+              "from": "name",
+              "required": true
+            },
+            {
+              "key": "id",
+              "label": "Cod intern",
+              "type": "slug",
+              "from": "slug",
+              "prefix": "p-",
+              "required": true
+            },
+            {
+              "key": "category",
+              "label": "Categorie",
+              "type": "select",
+              "required": true,
+              "options": [
+                {
+                  "value": "Tech"
+                },
+                {
+                  "value": "Home"
+                },
+                {
+                  "value": "Kitchen"
+                },
+                {
+                  "value": "Fitness"
+                },
+                {
+                  "value": "Fashion"
+                },
+                {
+                  "value": "Home office"
+                },
+                {
+                  "value": "Car"
+                },
+                {
+                  "value": "Pets"
+                },
+                {
+                  "value": "Beauty"
+                }
+              ]
+            },
+            {
+              "key": "tagline",
+              "label": "Frază scurtă de vânzare",
+              "type": "longtext",
+              "required": true
+            },
+            {
+              "key": "images",
+              "label": "Poze",
+              "type": "list",
+              "itemTitle": "alt",
+              "itemImage": "src",
+              "fields": [
+                {
+                  "key": "src",
+                  "label": "Poza",
+                  "type": "image",
+                  "required": true
+                },
+                {
+                  "key": "alt",
+                  "label": "Ce se vede în poză",
+                  "type": "text",
+                  "required": true
+                }
+              ],
+              "newItem": {
+                "src": "",
+                "alt": ""
+              }
+            },
+            {
+              "key": "variants",
+              "label": "Variante și prețuri",
+              "type": "list",
+              "itemTitle": "name",
+              "itemSubtitle": "priceCents",
+              "fields": [
+                {
+                  "key": "name",
+                  "label": "Nume variantă (ex. Silver)",
+                  "type": "text",
+                  "required": true
+                },
+                {
+                  "key": "id",
+                  "label": "Cod variantă",
+                  "type": "slug",
+                  "from": "name",
+                  "required": true
+                },
+                {
+                  "key": "priceCents",
+                  "label": "Preț",
+                  "type": "money",
+                  "unit": "cents",
+                  "currency": "EUR",
+                  "required": true
+                },
+                {
+                  "key": "compareAtCents",
+                  "label": "Preț vechi (doar dacă s-a vândut real la el)",
+                  "type": "money",
+                  "unit": "cents",
+                  "currency": "EUR"
+                },
+                {
+                  "key": "inStock",
+                  "label": "În stoc",
+                  "type": "bool"
+                },
+                {
+                  "key": "image",
+                  "label": "Poza variantei (număr, 0 = prima)",
+                  "type": "number"
+                },
+                {
+                  "key": "swatch",
+                  "label": "Culoare afișată (opțional)",
+                  "type": "color"
+                }
+              ],
+              "newItem": {
+                "id": "",
+                "name": "",
+                "priceCents": 1000,
+                "inStock": true
+              }
+            },
+            {
+              "key": "variantLabel",
+              "label": "Cum se numesc variantele (ex. Colour, Size)",
+              "type": "text"
+            },
+            {
+              "key": "description",
+              "label": "Descriere (câte un paragraf pe rând)",
+              "type": "stringList",
+              "multiline": true
+            },
+            {
+              "key": "highlights",
+              "label": "Puncte forte",
+              "type": "stringList"
+            },
+            {
+              "key": "specs",
+              "label": "Specificații",
+              "type": "list",
+              "itemTitle": "label",
+              "itemSubtitle": "value",
+              "fields": [
+                {
+                  "key": "label",
+                  "label": "Ce",
+                  "type": "text",
+                  "required": true
+                },
+                {
+                  "key": "value",
+                  "label": "Valoare",
+                  "type": "text",
+                  "required": true
+                }
+              ],
+              "newItem": {
+                "label": "",
+                "value": ""
+              }
+            },
+            {
+              "key": "inTheBox",
+              "label": "Ce e în cutie",
+              "type": "stringList"
+            },
+            {
+              "key": "faq",
+              "label": "Întrebări frecvente",
+              "type": "list",
+              "itemTitle": "q",
+              "fields": [
+                {
+                  "key": "q",
+                  "label": "Întrebare",
+                  "type": "text",
+                  "required": true
+                },
+                {
+                  "key": "a",
+                  "label": "Răspuns",
+                  "type": "longtext",
+                  "required": true
+                }
+              ],
+              "newItem": {
+                "q": "",
+                "a": ""
+              }
+            },
+            {
+              "key": "featured",
+              "label": "Apare pe prima pagină",
+              "type": "bool"
+            },
+            {
+              "key": "demo",
+              "label": "Produs demonstrativ",
+              "type": "bool"
+            },
+            {
+              "key": "trend",
+              "label": "Date de piață („Trending”)",
+              "type": "group",
+              "optional": true,
+              "fields": [
+                {
+                  "key": "stat",
+                  "label": "Cifra (ex. +1.771%)",
+                  "type": "text"
+                },
+                {
+                  "key": "detail",
+                  "label": "Explicație",
+                  "type": "text"
+                },
+                {
+                  "key": "source",
+                  "label": "Sursa",
+                  "type": "text"
+                },
+                {
+                  "key": "url",
+                  "label": "Link la sursă",
+                  "type": "text"
+                }
+              ]
+            }
+          ],
+          "newItem": {
+            "id": "",
+            "slug": "",
+            "name": "",
+            "category": "Home",
+            "tagline": "",
+            "description": [
+              ""
+            ],
+            "highlights": [
+              ""
+            ],
+            "specs": [],
+            "images": [],
+            "variants": [
+              {
+                "id": "standard",
+                "name": "Standard",
+                "priceCents": 1990,
+                "inStock": true
+              }
+            ],
+            "variantLabel": "Option",
+            "demo": true
+          }
+        }
+      ]
+    },
+    {
+      "path": "src/data/site.json",
+      "sections": [
+        {
+          "key": "name",
+          "label": "Numele magazinului",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "description",
+          "label": "Descrierea magazinului (Google, social)",
+          "type": "longtext"
+        },
+        {
+          "key": "company",
+          "label": "Datele firmei",
+          "description": "Tot ce e între [paranteze] e de completat înainte de lansare.",
+          "type": "group",
+          "fields": [
+            {
+              "key": "legalName",
+              "label": "Denumire firmă",
+              "type": "text"
+            },
+            {
+              "key": "registrationNumber",
+              "label": "Nr. Registrul Comerțului",
+              "type": "text"
+            },
+            {
+              "key": "vatId",
+              "label": "CUI / cod TVA",
+              "type": "text"
+            },
+            {
+              "key": "address",
+              "label": "Adresă",
+              "type": "text"
+            },
+            {
+              "key": "email",
+              "label": "Email",
+              "type": "text"
+            },
+            {
+              "key": "phone",
+              "label": "Telefon",
+              "type": "text"
+            },
+            {
+              "key": "representative",
+              "label": "Administrator",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "key": "shipping",
+          "label": "Livrare",
+          "type": "group",
+          "fields": [
+            {
+              "key": "shipsFrom",
+              "label": "De unde pleacă coletele",
+              "type": "text"
+            },
+            {
+              "key": "flatRateCents",
+              "label": "Cost livrare",
+              "type": "money",
+              "unit": "cents",
+              "currency": "EUR"
+            },
+            {
+              "key": "freeOverCents",
+              "label": "Livrare gratuită peste",
+              "type": "money",
+              "unit": "cents",
+              "currency": "EUR"
+            },
+            {
+              "key": "handlingDays",
+              "label": "Zile până pleacă din depozit",
+              "type": "group",
+              "fields": [
+                {
+                  "key": "min",
+                  "label": "Minim",
+                  "type": "number"
+                },
+                {
+                  "key": "max",
+                  "label": "Maxim",
+                  "type": "number"
+                }
+              ]
+            },
+            {
+              "key": "transitDays",
+              "label": "Zile de transport",
+              "type": "group",
+              "fields": [
+                {
+                  "key": "min",
+                  "label": "Minim",
+                  "type": "number"
+                },
+                {
+                  "key": "max",
+                  "label": "Maxim",
+                  "type": "number"
+                }
+              ]
+            },
+            {
+              "key": "cutoffHour",
+              "label": "Ora limită pentru expediere în aceeași zi",
+              "type": "number"
+            },
+            {
+              "key": "carrier",
+              "label": "Curier",
+              "type": "text"
+            }
+          ]
+        },
+        {
+          "key": "returns",
+          "label": "Retur",
+          "type": "group",
+          "fields": [
+            {
+              "key": "customerPaysReturn",
+              "label": "Clientul plătește transportul la retur",
+              "type": "bool"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

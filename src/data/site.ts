@@ -1,3 +1,7 @@
+import { z } from "zod";
+
+import settingsJson from "./site.json";
+
 /**
  * Single source of truth for store settings.
  * Everything wrapped in [BRACKETS] is a placeholder you MUST replace before launch.
@@ -10,10 +14,40 @@ export const EU_COUNTRIES = [
 
 export type EuCountry = (typeof EU_COUNTRIES)[number];
 
+/**
+ * Editable settings (name, company details, shipping, returns) live in site.json,
+ * so they can be changed without touching code (e.g. from the Organizator app).
+ * Validated at build time: an invalid edit fails the build and the live site keeps
+ * its previous version. Legal minimums and runtime switches stay here, in code.
+ */
+const settingsSchema = z.object({
+  name: z.string().min(1),
+  description: z.string(),
+  company: z.object({
+    legalName: z.string(),
+    registrationNumber: z.string(),
+    vatId: z.string(),
+    address: z.string(),
+    email: z.string(),
+    phone: z.string(),
+    representative: z.string(),
+  }),
+  shipping: z.object({
+    shipsFrom: z.string(),
+    flatRateCents: z.number().int().nonnegative(),
+    freeOverCents: z.number().int().nonnegative(),
+    handlingDays: z.object({ min: z.number().int().nonnegative(), max: z.number().int().nonnegative() }),
+    transitDays: z.object({ min: z.number().int().nonnegative(), max: z.number().int().nonnegative() }),
+    cutoffHour: z.number().int().min(0).max(23),
+    carrier: z.string(),
+  }),
+  returns: z.object({ customerPaysReturn: z.boolean() }),
+});
+const settings = settingsSchema.parse(settingsJson);
+
 export const site = {
-  name: "Sodo Store",
-  description:
-    "Trending products picked from real sales and search data: tech, home, fitness, pets and more. Tracked delivery across the EU.",
+  name: settings.name,
+  description: settings.description,
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
 
   /**
@@ -25,37 +59,19 @@ export const site = {
   currency: "EUR",
   locale: "en-IE",
 
-  company: {
-    legalName: "[COMPANY LEGAL NAME SRL]",
-    registrationNumber: "[TRADE REGISTER NO. J00/0000/2026]",
-    vatId: "[VAT ID RO00000000]",
-    address: "[Street, number, postcode, city, Romania]",
-    email: "[support@yourdomain.com]",
-    phone: "[+40 700 000 000]",
-    representative: "[Full name of administrator]",
-  },
+  /** Everything wrapped in [BRACKETS] in site.json is a placeholder you MUST replace before launch. */
+  company: settings.company,
 
   shipping: {
-    /** Where parcels are actually dispatched from. Must be true. */
-    shipsFrom: "[our partner warehouse in Poland]",
+    ...settings.shipping,
     countries: EU_COUNTRIES,
-    /** Flat shipping price in cents, charged below the free-shipping threshold. */
-    flatRateCents: 490,
-    freeOverCents: 4900,
-    /** Business days before the parcel leaves the warehouse. */
-    handlingDays: { min: 1, max: 2 },
-    /** Business days the carrier needs once dispatched. */
-    transitDays: { min: 2, max: 5 },
-    /** Local cut-off hour: orders after it are handled from the next business day. */
-    cutoffHour: 14,
-    carrier: "[DPD / GLS / InPost]",
   },
 
   returns: {
     /** Statutory EU withdrawal period in days. Do not lower it. */
     withdrawalDays: 14,
     /** Who pays return shipping when the customer withdraws. */
-    customerPaysReturn: true,
+    customerPaysReturn: settings.returns.customerPaysReturn,
   },
 } as const;
 

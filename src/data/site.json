@@ -1,0 +1,31 @@
+{
+  "name": "Sodo Store",
+  "description": "Trending products picked from real sales and search data: tech, home, fitness, pets and more. Tracked delivery across the EU.",
+  "company": {
+    "legalName": "[COMPANY LEGAL NAME SRL]",
+    "registrationNumber": "[TRADE REGISTER NO. J00/0000/2026]",
+    "vatId": "[VAT ID RO00000000]",
+    "address": "[Street, number, postcode, city, Romania]",
+    "email": "[support@yourdomain.com]",
+    "phone": "[+40 700 000 000]",
+    "representative": "[Full name of administrator]"
+  },
+  "shipping": {
+    "shipsFrom": "[our partner warehouse in Poland]",
+    "flatRateCents": 490,
+    "freeOverCents": 4900,
+    "handlingDays": {
+      "min": 1,
+      "max": 2
+    },
+    "transitDays": {
+      "min": 2,
+      "max": 5
+    },
+    "cutoffHour": 14,
+    "carrier": "[DPD / GLS / InPost]"
+  },
+  "returns": {
+    "customerPaysReturn": true
+  }
+}

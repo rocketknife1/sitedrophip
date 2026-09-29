@@ -33,10 +33,12 @@ Produsele cu `trend` în `src/data/products.ts` primesc eticheta „Trending” 
 
 ## Unde schimbi ce
 
+Produsele și setările se editează și din aplicația Organizator (tab-ul „Site-uri”), care face commit pe fișierele JSON de mai jos; formularele sunt descrise în `admin/schema.json`. Un JSON invalid oprește build-ul, iar site-ul rămâne pe versiunea anterioară.
+
 | Ce | Fișier |
 | --- | --- |
-| Numele magazinului, datele firmei, livrare, retur | `src/data/site.ts` |
-| Produse, prețuri, variante, texte | `src/data/products.ts` |
+| Numele magazinului, datele firmei, livrare, retur | `src/data/site.json` (validat în `site.ts`) |
+| Produse, prețuri, variante, texte | `src/data/products.json` (validat în `products.ts`) |
 | SKU și cost de la furnizor (secret, doar pe server) | `src/data/supplier.ts` |
 | Poze produse | `public/images/products/` (JPG/WebP, min. 1400 px). Acum sunt poze demo de pe Unsplash, vezi `public/images/CREDITS.md` |
 | Texte legale | `src/content/legal.tsx` |
